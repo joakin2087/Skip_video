@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Stylesheet" type="text/css" href="./styles.css">
+    <title>Skip_video</title>
+</head>
+<body>
+    <h1 id="hd">Salteador de Video</h1>
+    <video id="miVideo" controls autoplay width="640">
+        <source id="videoSource" type="video/mp4">
+      </video>
+      <button id="btn" >URL</button>
+        <!-- Video en la página -->
+  
+  <!-- Modal de confirmación personalizado -->
+  <div id="confirmationModal">
+    <div id="modalContent">
+      <h2>El video ha terminado</h2>
+      <p>¿Deseas ir al siguiente enlace?</p>
+      <p>Tiempo restante: <span id="timeLeftDisplay">10</span> segundos</p>
+      <div id="countdownBar">
+        <div id="countdownProgress"></div>
+      </div>
+      <div>
+        <button id="confirmBtn">Confirmar</button>
+        <button id="cancelBtn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+      <script src="./main.js"></script>
+    
+</body>
