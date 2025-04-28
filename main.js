@@ -14,7 +14,7 @@ const btn = document.getElementById('btn');
 let videoUrl =document.getElementById('videoSource');
 document.getElementById('videoSource').src = videoUrl;
 document.getElementById('miVideo').load();
-    
+  
 function pideUrl () {
          videoUrl = prompt("Ingrese la dirección del video:");
           document.getElementById('videoSource').src = videoUrl;
@@ -70,6 +70,6 @@ function redirect() {
     modal.classList.remove('active');
     // Aquí puedes decidir si no hacer nada o ejecutar otra acción.
   });
-  
+
   // Solicitar la dirección del video al cargar la página
 btn.onclick = pideUrl;
