@@ -15,6 +15,7 @@ let videoUrl =document.getElementById('videoSource');
 document.getElementById('videoSource').src = videoUrl;
 document.getElementById('miVideo').load();
   
+ 
 function pideUrl () {
          videoUrl = prompt("Ingrese la dirección del video:");
           document.getElementById('videoSource').src = videoUrl;
@@ -25,7 +26,7 @@ function pideUrl () {
 function redirect() {
     
    
-    const newUrl = videoUrl.replace(/t22_e(\d+)/, (match, num) => `t22_e${String(parseInt(num) + 1).padStart(2, '0')}`);
+    const newUrl = videoUrl.replace(/t24_e(\d+)/, (match, num) => `t24_e${String(parseInt(num) + 1).padStart(2, '0')}`);
     document.getElementById('videoSource').src= newUrl;
     videoUrl= newUrl;
     document.getElementById('miVideo').load();
