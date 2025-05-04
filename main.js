@@ -6,6 +6,7 @@ const modal = document.getElementById('confirmationModal');
 const timeDisplay = document.getElementById('timeLeftDisplay');
 const confirmBtn = document.getElementById('confirmBtn');
 const cancelBtn = document.getElementById('cancelBtn');
+const video = document.getElementById('miVideo');
 const countdownProgress = document.getElementById('countdownProgress');
 
 let countdownInterval;
@@ -33,9 +34,24 @@ function redirect() {
     
   }
 
-  const video = document.getElementById('miVideo');
+// funcion para cambiar full screen
+
+function toggleFullscreen(element) {
+  if (document.exitFullscreen) {
+      document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+  }
+}
+
+// Evento para finalización del video
 
   video.addEventListener('ended', () => {
+    toggleFullscreen();
     let timeLeft = 10;
     const totalSeconds = 10;
     timeDisplay.innerText = timeLeft;
