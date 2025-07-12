@@ -15,26 +15,36 @@ const btn = document.getElementById('btn');
 let videoUrl =document.getElementById('videoSource');
 document.getElementById('videoSource').src = videoUrl;
 document.getElementById('miVideo').load();
-  
- 
-function pideUrl () {
-         videoUrl = prompt("Ingrese la dirección del video:");
-          document.getElementById('videoSource').src = videoUrl;
-          document.getElementById('miVideo').load();
-        }     
-         
-  
-function redirect() {
-    
-   
-    const newUrl = videoUrl.replace(/t24_e(\d+)/, (match, num) => `t24_e${String(parseInt(num) + 1).padStart(2, '0')}`);
-    document.getElementById('videoSource').src= newUrl;
-    videoUrl= newUrl;
-    document.getElementById('miVideo').load();
-    
-  }
 
-// funcion para cambiar full screen
+let modificaUrl = '';
+
+// Escapa caracteres especiales para usar como literal en la RegExp
+function escapeForRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Pide URL y sección
+function pideUrl() {
+  videoUrl = prompt("Ingrese la URL del video:");
+  modificaUrl = prompt("Prefijo a incrementar (p.ej. 't24_e'):");
+  document.getElementById('videoSource').src = videoUrl;
+  video.load();
+}
+
+// Incrementa el episodio en la URL
+function redirect() {
+  const prefixEscaped = escapeForRegex(modificaUrl);
+  const regex = new RegExp(`${prefixEscaped}(\\d+)`);
+  const newUrl = videoUrl.replace(regex, (match, num) => {
+    const nextNum = String(parseInt(num, 10) + 1).padStart(num.length, '0');
+    return `${modificaUrl}${nextNum}`;
+  });
+  videoUrl = newUrl;
+  document.getElementById('videoSource').src = newUrl;
+  video.load();
+}
+  
+// funcion para cambiar full screen 
 
 function toggleFullscreen(element) {
   if (document.exitFullscreen) {
